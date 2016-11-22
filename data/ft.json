@@ -1,0 +1,9 @@
+module.exports = {
+	name: 'The Financial Times',
+	logo: {
+		url: "http://im.ft-static.com/m/img/masthead_main.jpg",
+		width: 435,
+		height: 36
+	},
+	url: "https://www.ft.com"
+}

@@ -1,8 +1,11 @@
 'use strict';
 
+const htmlToText = require('html-to-text');
+const wordcount = require('wordcount');
+const ftData = require('../data/ft');
 const image = require('./image');
 const person = require('./person');
-const publisher = require('./publisher');
+const organization = require('./organization');
 
 module.exports = (content) => {
 	let baseSchema = {
@@ -28,7 +31,12 @@ module.exports = (content) => {
 		});
 	}
 
-	Object.assign(baseSchema, publisher());
+	if (content.bodyHTML) {
+		const text = htmlToText.fromString(content.bodyHTML, {ignoreHref: true});
+		Object.assign(baseSchema, {articleBody: text, wordCount: wordcount(text)})
+	}
+
+	Object.assign(baseSchema, { publisher: organization(ftData) });
 
 	return baseSchema;
 }

@@ -1,19 +1,27 @@
 'use strict';
 
-const article = require('./types/article');
+const ftData = require('./data/ft');
+const organization = require('./types/organization');
+const newsArticle = require('./types/article');
 
-function init (options) {
-	const baseSchema = {
-		"@context": "http://schema.org"
-	};
-	
-	if (!options.content) {
-		return;
-	}
 
-	if (options.type === 'article') {
-		return JSON.stringify(Object.assign(baseSchema, article(options.content)));
-	}
+function addContext (schema) {
+	return Object.assign(schema, { "@context": "http://schema.org" });
 }
 
-module.exports = init;
+function ft () {
+	return new Promise (resolve => {
+		resolve(JSON.stringify(addContent(organization(ftData))));
+	});
+}
+
+function article (content) {
+	return new Promise(resolve => {
+		resolve(JSON.stringify(addContext(newsArticle(content))))
+	});	
+}
+
+module.exports = {
+	ft: ft,
+	newsArticle: article
+};
