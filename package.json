@@ -1,5 +1,5 @@
 {
-  "name": "ft-json-ld",
+  "name": "next-json-ld",
   "version": "0.0.0",
   "description": "Converts data into JSON-LD for schema.org",
   "main": "main.js",
