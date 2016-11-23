@@ -2,19 +2,20 @@
 
 const htmlToText = require('html-to-text');
 const wordcount = require('wordcount');
-const ftData = require('../data/ft');
 const image = require('./image');
 const person = require('./person');
 const organization = require('./organization');
+const ftData = require('../data/ft');
 
 module.exports = (content) => {
 	let baseSchema = {
+		"@context": "http://schema.org",
 		"@type": "NewsArticle",
 		"mainEntityofPage": content.canonicalUrl,
 		"headline": content.title,
 		"datePublished": content.initialPublishedDate ? content.initialPublishedDate : content.publishedDate,
 		"dateModified": content.publishedDate,
-		"description": content.initialPublishedDate ? content.description : content.title
+		"description": content.description
 	};
 
 	if (content.alternativeTitles && content.alternativeTitles.promotionalTitle) {

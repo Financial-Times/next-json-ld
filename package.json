@@ -1,16 +1,11 @@
 {
   "name": "next-json-ld",
-  "version": "1.0.0",
-  "description": "Converts data from the next ElasticSearch into JSON-LD for schema.org",
+  "version": "0.0.0",
+  "description": "Converts data into JSON-LD for schema.org",
   "main": "main.js",
-  "directories": {
-    "test": "tests"
-  },
-  "scripts": {
-    "test": "mocha tests/"
-  },
   "devDependencies": {
-    "mocha": "^3.1.2"
+    "mocha": "^3.1.2",
+    "npm-prepublish": "^1.2.2"
   },
   "dependencies": {
     "html-to-text": "^2.1.3",
