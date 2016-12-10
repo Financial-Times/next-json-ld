@@ -2,17 +2,24 @@
 
 const ftData = require('./data/ft');
 const organization = require('./types/organization');
-const newsArticle = require('./types/article');
+const articleTransform = require('./types/article');
+const personTransform = require('./types/person');
 
 function ft () {
 	return organization(ftData);
 }
 
 function article (content) {
-	return newsArticle(content);
+	return articleTransform(content);
+}
+
+function person (content) {
+	return personTransform(content)
 }
 
 module.exports = {
 	ft: ft,
-	newsArticle: article
+	newsArticle: article,
+	person: person
 };
+
