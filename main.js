@@ -4,7 +4,7 @@ const ftData = require('./data/ft');
 const organization = require('./types/organization');
 const articleTransform = require('./types/article');
 const personTransform = require('./types/person');
-const webSiteTransform = require('./types/website');
+const webPageTransform = require('./types/webpage');
 
 function ft () {
 	return organization(ftData);
@@ -18,14 +18,15 @@ function person (content) {
 	return personTransform(content)
 }
 
-function webSite (content) {
-	return webSiteTransform(content)
+function webPage (content) {
+	return webPageTransform(content)
 }
 
 module.exports = {
 	ft: ft,
 	newsArticle: article,
 	person: person,
-	webSite: webSite
+	webSite: webPage,
+	webPage: webPage
 };
 
