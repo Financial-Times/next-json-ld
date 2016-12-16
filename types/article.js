@@ -11,7 +11,7 @@ module.exports = (content) => {
 	let baseSchema = {
 		"@context": "http://schema.org",
 		"@type": "NewsArticle",
-		"mainEntityofPage": content.canonicalUrl,
+		"url": content.canonicalUrl,
 		"headline": content.title,
 		"datePublished": content.initialPublishedDate ? content.initialPublishedDate : content.publishedDate,
 		"dateModified": content.publishedDate,
