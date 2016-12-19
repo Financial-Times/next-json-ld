@@ -6,5 +6,10 @@ module.exports = {
 		width: 435,
 		height: 36
 	},
-	url: "https://www.ft.com"
+	url: "https://www.ft.com",
+	twitterHandle: "FT",
+	facebookProfile: "financialtimes",
+	instagramProfile: "financialtimes",
+	youtubeProfile: "FinancialTimesVideos",
+	linkedinProfile: "financial-times"
 }

@@ -26,7 +26,6 @@ module.exports = {
 	ft: ft,
 	newsArticle: article,
 	person: person,
-	webSite: webPage,
 	webPage: webPage
 };
 

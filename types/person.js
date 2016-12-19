@@ -1,12 +1,14 @@
 'use strict';
 
 const organization = require('./organization');
+const social = require('./social');
 const ftData = require('../data/ft');
 
 module.exports = (person) => {
-
+	const sameAs = social(person, 'person');
 	const baseSchema = {
 		"@type": "Person",
+		"@context":"http://schema.org",
 		"name": person.prefLabel || person.name
 	};
 
@@ -32,18 +34,6 @@ module.exports = (person) => {
 	if (person.strapline) {
 		Object.assign(baseSchema, {jobTitle: person.strapline});
 	}
-
-	if (person.twitterHandle) {
-		Object.assign(baseSchema, {sameAs: [`https://www.twitter.com/${person.twitterHandle}`]});
-	}
-	
-	if (person.facebookProfile) {
-		Object.assign(baseSchema, {sameAs: [`https://www.facebook.com/${person.facebookProfile}`]});
-	}
-
-	if (person.linkedinProfile) {
-		Object.assign(baseSchema, {sameAs: [`https://www.linkedin.com/in/${person.linkedinProfile}`]});
-	}
 	
 	// Experiment to see if google pick up our data for heights
 	if (person.apiUrl && person.apiUrl.match(/7fce0429-54de-31d5-b511-acc9c4914eb2$/)) {
@@ -56,6 +46,9 @@ module.exports = (person) => {
 		Object.assign(baseSchema, {height: '1.01492537 smoots'});
 	}
 
+	if (sameAs.length) {
+		Object.assign(baseSchema, {sameAs: sameAs});
+	}
 
 	Object.assign(baseSchema, {worksFor: organization(ftData)})
 

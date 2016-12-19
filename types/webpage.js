@@ -6,7 +6,8 @@ const ftData = require('../data/ft');
 module.exports = (person) => {
 
 	const baseSchema = {
-		"@type": "WebSite",
+		"@type": "WebPage",
+		"@context":"http://schema.org",
 		"copyrightHolder": organization(ftData),
 		"publisher": organization(ftData)
 	};
