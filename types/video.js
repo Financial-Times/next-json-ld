@@ -25,11 +25,13 @@ module.exports = (content) => {
 		"datePublished": content.publishedDate,
 		"author": organization(ftData),
 		"publisher": organization(ftData),
+		"thumbnailUrl": content.mainImage.url,
 		// MediaObject
 		"width": rendition.frameWidth,
 		"height": rendition.frameHeight,
 		"playerType": "HTML5",
 		"duration": duration(rendition.videoDuration),
+		"uploadDate": content.publishedDate,
 		// VideoObject
 		"thumbnail": image(content.mainImage)
 	};
