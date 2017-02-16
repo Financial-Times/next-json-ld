@@ -15,26 +15,26 @@ module.exports = (content) => {
 	));
 
 	let baseSchema = {
-		"@context": "http://schema.org",
-		"@type": "VideoObject",
+		'@context': 'http://schema.org',
+		'@type': 'VideoObject',
 		// Thing
-		"url": content.url,
-		"name": content.title,
-		"description": content.standfirst,
+		'url': content.url,
+		'name': content.title,
+		'description': content.standfirst,
 		// CreativeWork
-		"datePublished": content.publishedDate,
-		"author": organization(ftData),
-		"publisher": organization(ftData),
-		"thumbnailUrl": content.mainImage.url,
+		'datePublished': content.publishedDate,
+		'author': organization(ftData),
+		'publisher': organization(ftData),
+		'thumbnailUrl': content.mainImage.url,
 		// MediaObject
-		"width": rendition.frameWidth,
-		"height": rendition.frameHeight,
-		"playerType": "HTML5",
-		"duration": duration(rendition.videoDuration),
-		"uploadDate": content.publishedDate,
+		'width': rendition.frameWidth,
+		'height': rendition.frameHeight,
+		'playerType': 'HTML5',
+		'duration': duration(rendition.videoDuration),
+		'uploadDate': content.publishedDate,
 		// VideoObject
-		"thumbnail": image(content.mainImage)
+		'thumbnail': image(content.mainImage)
 	};
 
 	return baseSchema;
-}
+};
