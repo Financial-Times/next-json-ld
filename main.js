@@ -29,7 +29,7 @@ function video (content) {
 
 module.exports = {
 	ft,
-	newsArticle,
+	newsArticle: article,
 	person,
 	webPage,
 	video

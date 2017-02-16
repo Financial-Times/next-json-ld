@@ -9,9 +9,9 @@ const duration = (ms) => {
 };
 
 module.exports = (content) => {
-	const rendition = content.attachments.find((item) => (
+	const rendition = content.renditions.find((item) => (
 		// We have several renditions with more on the way... 480x270, 640x360 and 960x540
-		item.mediaType === 'video/mp4' && item.width >= 640 && item.width < 960
+		item.frameWidth >= 640 && item.frameHeight < 960
 	));
 
 	let baseSchema = {
@@ -26,10 +26,10 @@ module.exports = (content) => {
 		"author": organization(ftData),
 		"publisher": organization(ftData),
 		// MediaObject
-		"width": rendition.width,
-		"height": rendition.height,
+		"width": rendition.frameWidth,
+		"height": rendition.frameHeight,
 		"playerType": "HTML5",
-		"duration": duration(rendition.duration),
+		"duration": duration(rendition.videoDuration),
 		// VideoObject
 		"thumbnail": image(content.mainImage)
 	};
