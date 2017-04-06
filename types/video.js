@@ -19,7 +19,7 @@ module.exports = (content, rendition = {}) => ({
 	'datePublished': content.publishedDate,
 	'author': organization(ftData),
 	'publisher': organization(ftData),
-	'thumbnailUrl': content.mainImage.url,
+	'thumbnailUrl': content.mainImage && content.mainImage.url,
 	// MediaObject
 	'width': rendition.frameWidth,
 	'height': rendition.frameHeight,
@@ -27,5 +27,5 @@ module.exports = (content, rendition = {}) => ({
 	'duration': duration(rendition.videoDuration),
 	'uploadDate': content.publishedDate,
 	// VideoObject
-	'thumbnail': image(content.mainImage)
+	'thumbnail': content.mainImage && image(content.mainImage)
 });
