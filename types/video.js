@@ -8,6 +8,10 @@ const duration = (ms) => {
 	return `PT${date.getMinutes()}M${date.getSeconds()}S`;
 };
 
+const encodings = {
+	'video/mp4': 'mpeg4'
+};
+
 /**
  * @param {Object} [rendition={}]
  * @param {number} rendition.width
@@ -32,6 +36,9 @@ module.exports = (content, rendition = {}) => ({
 	'playerType': 'HTML5',
 	'duration': duration(rendition.duration),
 	'uploadDate': content.publishedDate,
+	'contentUrl': rendition.url,
+	'encodingFormat': encodings[rendition.mediaType],
+	'requiresSubscription': false,
 	// VideoObject
 	'thumbnail': content.mainImage && image(content.mainImage)
 });
