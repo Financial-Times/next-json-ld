@@ -8,6 +8,12 @@ const duration = (ms) => {
 	return `PT${date.getMinutes()}M${date.getSeconds()}S`;
 };
 
+/**
+ * @param {Object} [rendition={}]
+ * @param {number} rendition.width
+ * @param {number} rendition.height
+ * @param {number} rendition.duration
+ */
 module.exports = (content, rendition = {}) => ({
 	'@context': 'http://schema.org',
 	'@type': 'VideoObject',
@@ -21,10 +27,10 @@ module.exports = (content, rendition = {}) => ({
 	'publisher': organization(ftData),
 	'thumbnailUrl': content.mainImage && content.mainImage.url,
 	// MediaObject
-	'width': rendition.frameWidth,
-	'height': rendition.frameHeight,
+	'width': rendition.width,
+	'height': rendition.height,
 	'playerType': 'HTML5',
-	'duration': duration(rendition.videoDuration),
+	'duration': duration(rendition.duration),
 	'uploadDate': content.publishedDate,
 	// VideoObject
 	'thumbnail': content.mainImage && image(content.mainImage)
