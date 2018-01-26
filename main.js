@@ -13,5 +13,6 @@ module.exports = {
 	newsArticle: require('./types/article'),
 	person: require('./types/person'),
 	webPage: require('./types/webpage'),
-	video: require('./types/video')
+	video: require('./types/video'),
+	barrier: require('./types/barrier')
 };
