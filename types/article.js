@@ -16,7 +16,9 @@ module.exports = (content) => {
 		'datePublished': content.initialPublishedDate ? content.initialPublishedDate : content.publishedDate,
 		'dateModified': content.publishedDate,
 		'description': content.description,
-		'isAccessibleForFree': content.freeArticle ? 'True' : 'False'
+		'isAccessibleForFree': content.freeArticle ? 'True' : 'False',
+		// for swg
+		'accessLevelLabel': content.accessLevel
 	};
 
 	if (content.alternativeTitles && content.alternativeTitles.promotionalTitle) {
