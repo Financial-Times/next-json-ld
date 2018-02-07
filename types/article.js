@@ -21,6 +21,8 @@ module.exports = (content) => {
 		'isAccessibleForFree': content.freeArticle ? 'True' : 'False'
 	};
 
+	Object.assign(baseSchema, { isPartOf: product(ftData, content) });
+
 	if (content.alternativeTitles && content.alternativeTitles.promotionalTitle) {
 		Object.assign(baseSchema, { alternativeHeadline: content.alternativeTitles.promotionalTitle });
 	}
@@ -41,7 +43,6 @@ module.exports = (content) => {
 	}
 
 	Object.assign(baseSchema, { publisher: organization(ftData) });
-	Object.assign(baseSchema, { isPartOf: product(ftData, content) });
 
 	return baseSchema;
 };
