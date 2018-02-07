@@ -11,5 +11,11 @@ module.exports = {
 	facebookProfile: 'financialtimes',
 	instagramProfile: 'financialtimes',
 	youtubeProfile: 'FinancialTimesVideos',
-	linkedinProfile: 'financial-times'
+	linkedinProfile: 'financial-times',
+	entitlements: {
+		free: 'com.ft.news:free',
+		registered: 'com.ft.news:registered',
+		subscribed: 'com.ft.news:subscribed',
+		premium: 'com.ft.news:premium'
+	}
 }

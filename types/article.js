@@ -5,12 +5,14 @@ const wordcount = require('wordcount');
 const image = require('./image');
 const person = require('./person');
 const organization = require('./organization');
+const product = require('./product');
 const ftData = require('../data/ft');
+
 
 module.exports = (content) => {
 	let baseSchema = {
 		'@context': 'http://schema.org',
-		'@type': 'NewsArticle',
+		'@type': [ 'NewsArticle', 'Product' ],
 		'url': content.canonicalUrl,
 		'headline': content.title,
 		'datePublished': content.initialPublishedDate ? content.initialPublishedDate : content.publishedDate,
@@ -35,10 +37,11 @@ module.exports = (content) => {
 
 	if (content.bodyHTML) {
 		const text = htmlToText.fromString(content.bodyHTML, {ignoreHref: true});
-		Object.assign(baseSchema, {articleBody: text, wordCount: wordcount(text)})
+		Object.assign(baseSchema, {articleBody: text, wordCount: wordcount(text)});
 	}
 
 	Object.assign(baseSchema, { publisher: organization(ftData) });
+	Object.assign(baseSchema, { isPartOf: product(ftData, content) });
 
 	return baseSchema;
 };
