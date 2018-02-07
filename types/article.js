@@ -12,7 +12,7 @@ const ftData = require('../data/ft');
 module.exports = (content) => {
 	let baseSchema = {
 		'@context': 'http://schema.org',
-		'@type': [ 'NewsArticle', 'Product' ],
+		'@type': 'NewsArticle',
 		'url': content.canonicalUrl,
 		'headline': content.title,
 		'datePublished': content.initialPublishedDate ? content.initialPublishedDate : content.publishedDate,
