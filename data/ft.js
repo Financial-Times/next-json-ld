@@ -13,7 +13,8 @@ module.exports = {
 	youtubeProfile: 'FinancialTimesVideos',
 	linkedinProfile: 'financial-times',
 	entitlements: {
-		free: 'ft.com:free',
+		// !Note that we do not (and should not) have a 'free':'ft.com:free' mapping.
+		// We do not want to mark content as requiring a 'free' entitlement.
 		registered: 'ft.com:registered',
 		subscribed: 'ft.com:subscribed',
 		premium: 'ft.com:premium'
