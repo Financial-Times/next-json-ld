@@ -13,9 +13,9 @@ module.exports = {
 	youtubeProfile: 'FinancialTimesVideos',
 	linkedinProfile: 'financial-times',
 	entitlements: {
-		free: 'com.ft.news:free',
-		registered: 'com.ft.news:registered',
-		subscribed: 'com.ft.news:subscribed',
-		premium: 'com.ft.news:premium'
+		free: 'ft.com:free',
+		registered: 'ft.com:registered',
+		subscribed: 'ft.com:subscribed',
+		premium: 'ft.com:premium'
 	}
 }
