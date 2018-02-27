@@ -12,10 +12,11 @@ module.exports = {
 	instagramProfile: 'financialtimes',
 	youtubeProfile: 'FinancialTimesVideos',
 	linkedinProfile: 'financial-times',
+	// SwG config. See README.md for more info.
 	entitlements: {
-		free: 'com.ft.news:free',
-		registered: 'com.ft.news:registered',
-		subscribed: 'com.ft.news:subscribed',
-		premium: 'com.ft.news:premium'
+		free: 'ft.com:subscribed',
+		registered: 'ft.com:subscribed',
+		subscribed: 'ft.com:subscribed',
+		premium: 'ft.com:premium'
 	}
 }
