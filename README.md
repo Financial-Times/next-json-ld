@@ -44,15 +44,15 @@ Included in the JSON-LD (but not the snippet below) is a whole load of other met
 
 ```
 {
-    '@context': 'http://schema.org',
-    '@type': 'NewsArticle',
-    [...]
-    'isAccessibleForFree': 'False',
-    'isPartOf': {
-        '@type': [ 'CreativeWork', 'Product' ],
-        'name' : 'Financial Times',
-        'productID': 'ft.com:subscribed' // or 'ft.com:premium' depending on the requested content accessLevel
-    }
+	'@context': 'http://schema.org',
+	'@type': 'NewsArticle',
+	[...]
+	'isAccessibleForFree': 'False',
+	'isPartOf': {
+		'@type': [ 'CreativeWork', 'Product' ],
+		'name' : 'Financial Times',
+		'productID': 'ft.com:subscribed' // or 'ft.com:premium' depending on the requested content accessLevel
+	}
 }
 ```
 
@@ -62,15 +62,15 @@ The `isAccessibleForFree` schema is for signaling "free to access" content
 
 ```
 {
-    '@context': 'http://schema.org',
-    '@type': 'NewsArticle',
-    [...]
-    'isAccessibleForFree': 'True',
-    'isPartOf': {
-        '@type': [ 'CreativeWork', 'Product' ],
-        'name' : 'Financial Times',
-        'productID': 'ft.com:subscribed'
-    }
+	'@context': 'http://schema.org',
+	'@type': 'NewsArticle',
+	[...]
+	'isAccessibleForFree': 'True',
+	'isPartOf': {
+		'@type': [ 'CreativeWork', 'Product' ],
+		'name' : 'Financial Times',
+		'productID': 'ft.com:subscribed'
+	}
 }
 ```
 
