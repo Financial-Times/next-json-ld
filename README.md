@@ -26,18 +26,18 @@ Helpers for producing schema.org markup in JSON LD on ft.com
 
 Firstly it is important to understand that each piece of content has an `accessLevel` associated with it. The access levels / restrictions for **content** are `free`,`registered`,`subscribed`,`premium`.
 
-These map nicely to Googles idea of **user** "entitlements". Whereby a **user** with an `ft.com:subscribed` entitlement would be allowed access to `subscribed` content and everything below (+ `registered` + `free`).
+These map nicely to Google's idea of **user** "entitlements". Whereby a **user** with an `ft.com:subscribed` entitlement would be allowed access to `subscribed` content and everything below (+ `registered` + `free`).
 
-#### Our entitlements range:
+#### Our entitlements range productIDs/labels:
 
-- **`ft.com:free`** (access to content with a `free` accessLevel)
-- **`ft.com:registered`** (`registered` accessLevel content + `free`)
-- **`ft.com:subscribed`** (`subscribed` accessLevel content + `registered` + `free`)
-- **`ft.com:premium`** (`premium` accessLevel content + `subscribed` + `registered` + `free`)
+- **1 `ft.com:free`** (access to content with a `free` accessLevel)
+- **2 `ft.com:registered`** (`registered` accessLevel content + `free`)
+- **3 `ft.com:subscribed`** (`subscribed` accessLevel content + `registered` + `free`)
+- **4 `ft.com:premium`** (`premium` accessLevel content + `subscribed` + `registered` + `free`)
 
-For obvious reasons we only offer `ft.com:subscribed` and `ft.com:premium` "purchases" via Subscribe with Google. Therefore in our markup we default our content to our "lowest" subscription tier "subscribed".
+For obvious reasons we only offer SKUs for purchase via Subscribe with Google that are either `ft.com:subscribed` (entitlements 1-3) and `ft.com:premium` (all entitlements).
 
-**Note:** This works in conjunction with the existing `isAccessibleForFree` schema which indicates if content is accessible for free. So we **will** have scenarios where `isAccessibleForFree:'True'` but we have SwG markup suggesting the appropriate entitlement is `ft.com:subscribed`. This is by design.
+**Note:** This works in conjunction with the existing `isAccessibleForFree` schema which indicates if content is accessible for free. In terms of access, the `isAccessibleForFree` property would trump any of the productIDs/labels.
 
 #### Example markup on Article Page behind paywall (as seen by google bot)
 Included in the JSON-LD (but not the snippet below) is a whole load of other meta data about the article.
@@ -51,14 +51,13 @@ Included in the JSON-LD (but not the snippet below) is a whole load of other met
 	'isPartOf': {
 		'@type': [ 'CreativeWork', 'Product' ],
 		'name' : 'Financial Times',
-		'productID': 'ft.com:subscribed' // or 'ft.com:premium' depending on the requested content accessLevel
+		'productID': 'ft.com:subscribed' // or 'ft.com:premium' or 'ft.com:registered' depending on the requested content accessLevel
 	}
 }
 ```
 
 #### Free Article page
-If the content is "free" or "registered" we still want to use our lowest subscription tier `productID`. That way, SwG will get all the skus applicable to "subscribed", which will include "subscribed" and "premium".
-The `isAccessibleForFree` schema is for signaling "free to access" content
+SwG would automatically fetch all our SKUs on a free page (which is what you would want in the case of running a promotion).
 
 ```
 {
@@ -69,10 +68,25 @@ The `isAccessibleForFree` schema is for signaling "free to access" content
 	'isPartOf': {
 		'@type': [ 'CreativeWork', 'Product' ],
 		'name' : 'Financial Times',
-		'productID': 'ft.com:subscribed'
+		'productID': 'ft.com:free'
 	}
 }
 ```
 
-#### Paywalls
-For paywall pages the SwG client is manually invoked passing in the relevant config, therefore the markup is not required on barriers.
+#### Content Barrier/Paywall
+Content barriers populate the `isPartOf` markup with data pertaining to the requested content. Unlike actual article pages it does not include the additional article meta data.
+
+```
+{
+	'@context': 'http://schema.org',
+	'isAccessibleForFree': 'False',
+	'isPartOf': {
+		'@type': [ 'CreativeWork', 'Product' ],
+		'name' : 'Financial Times',
+		'productID': 'ft.com:subscribed' // or 'ft.com:premium' or 'ft.com:registered' depending on the requested content accessLevel
+	}
+}
+```
+
+#### Standalone paywall (aka Product Selector)
+For the product selector the SwG client is manually invoked passing in the relevant config, therefore the markup is not required on barriers.
