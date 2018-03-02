@@ -10,7 +10,7 @@ module.exports = (content) => {
 	};
 
 	if (content && content.accessLevel) {
-		Object.assign(baseSchema, { 'isAccessibleForFree': content && content.freeArticle ? 'True' : 'False' });
+		Object.assign(baseSchema, { 'isAccessibleForFree': content && content.accessLevel && content.accessLevel === 'free' ? 'True' : 'False' });
 	}
 
 	Object.assign(baseSchema, { isPartOf: product(ftData, content) });
