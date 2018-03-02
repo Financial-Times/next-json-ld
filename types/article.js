@@ -5,7 +5,9 @@ const wordcount = require('wordcount');
 const image = require('./image');
 const person = require('./person');
 const organization = require('./organization');
+const product = require('./product');
 const ftData = require('../data/ft');
+
 
 module.exports = (content) => {
 	let baseSchema = {
@@ -18,6 +20,8 @@ module.exports = (content) => {
 		'description': content.description,
 		'isAccessibleForFree': content.freeArticle ? 'True' : 'False'
 	};
+
+	Object.assign(baseSchema, { isPartOf: product(ftData, content) });
 
 	if (content.alternativeTitles && content.alternativeTitles.promotionalTitle) {
 		Object.assign(baseSchema, { alternativeHeadline: content.alternativeTitles.promotionalTitle });
@@ -35,7 +39,7 @@ module.exports = (content) => {
 
 	if (content.bodyHTML) {
 		const text = htmlToText.fromString(content.bodyHTML, {ignoreHref: true});
-		Object.assign(baseSchema, {articleBody: text, wordCount: wordcount(text)})
+		Object.assign(baseSchema, {articleBody: text, wordCount: wordcount(text)});
 	}
 
 	Object.assign(baseSchema, { publisher: organization(ftData) });

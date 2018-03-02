@@ -5,3 +5,4 @@ node_modules/@financial-times/n-gage/index.mk:
 -include node_modules/@financial-times/n-gage/index.mk
 
 test: verify
+	mocha --recursive
