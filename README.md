@@ -30,10 +30,10 @@ These map nicely to Google's idea of **user** "entitlements". Whereby a **user**
 
 #### Our entitlements range productIDs/labels:
 
-- **1 `ft.com:free`** (access to content with a `free` accessLevel)
-- **2 `ft.com:registered`** (`registered` accessLevel content + `free`)
-- **3 `ft.com:subscribed`** (`subscribed` accessLevel content + `registered` + `free`)
-- **4 `ft.com:premium`** (`premium` accessLevel content + `subscribed` + `registered` + `free`)
+1. **`ft.com:free`** (access to content with a `free` accessLevel)
+2. **`ft.com:registered`** (`registered` accessLevel content + `free`)
+3. **`ft.com:subscribed`** (`subscribed` accessLevel content + `registered` + `free`)
+4. **`ft.com:premium`** (`premium` accessLevel content + `subscribed` + `registered` + `free`)
 
 For obvious reasons we only offer SKUs for purchase via Subscribe with Google that are either `ft.com:subscribed` (entitlements 1-3) and `ft.com:premium` (all entitlements).
 
