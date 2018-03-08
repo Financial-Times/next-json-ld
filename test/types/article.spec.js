@@ -20,21 +20,21 @@ describe('Type: Article', function () {
 			expect(result.publisher).to.deep.equal({ '@type': 'Organization', '@context': 'http://schema.org', name: 'ft' });
 		});
 
-		it('sets isAccessibleForFree based upon content.freeArticle', function () {
-			const result = article({ freeArticle: true });
+		it('sets isAccessibleForFree based upon content.accessLevel', function () {
+			const result = article({ accessLevel: 'free' });
 			expect(result.isAccessibleForFree).to.equal('True');
 		});
 
 		context('sets isPartOf.productID based upon content.accessLevel', function () {
 
 			it('free content', function () {
-				const result = article({ freeArticle: true, accessLevel: 'free' });
+				const result = article({ accessLevel: 'free' });
 				expect(result.isAccessibleForFree).to.equal('True');
 				expect(result.isPartOf.productID).to.equal('freeEntitlement');
 			});
 
 			it('paywalled content', function () {
-				const result = article({ freeArticle: false, accessLevel: 'premium' });
+				const result = article({ accessLevel: 'premium' });
 				expect(result.isAccessibleForFree).to.equal('False');
 				expect(result.isPartOf.productID).to.equal('premiumEntitlement');
 			});

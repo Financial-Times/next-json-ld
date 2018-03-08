@@ -18,7 +18,7 @@ module.exports = (content) => {
 		'datePublished': content.initialPublishedDate ? content.initialPublishedDate : content.publishedDate,
 		'dateModified': content.publishedDate,
 		'description': content.description,
-		'isAccessibleForFree': content.freeArticle ? 'True' : 'False'
+		'isAccessibleForFree': content.accessLevel && content.accessLevel === 'free' ? 'True' : 'False'
 	};
 
 	Object.assign(baseSchema, { isPartOf: product(ftData, content) });
