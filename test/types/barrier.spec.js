@@ -14,8 +14,9 @@ describe('Type: Barrier', function () {
 	context('standalone barrier (aka product selector)', function () {
 
 		it('has correct base format', function () {
-			const result = barrier({});
+			const result = barrier();
 			expect(result.isAccessibleForFree).to.be.undefined;
+			expect(result['@type']).to.equal('CreativeWork');
 			expect(result.isPartOf).to.deep.equal({ '@type': [ 'CreativeWork', 'Product' ], name: 'ft' });
 			expect(result.publisher).to.deep.equal({ '@type': 'Organization', '@context': 'http://schema.org', name: 'ft' });
 		});

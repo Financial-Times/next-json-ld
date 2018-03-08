@@ -1,17 +1,18 @@
 'use strict';
 
+const article = require('./article');
 const organization = require('./organization');
 const product = require('./product');
 const ftData = require('../data/ft');
 
 module.exports = (content) => {
-	let baseSchema = {
-		'@context': 'http://schema.org'
-	};
+	/* if passed article content markup as if article */
+	if (content) return article(content);
 
-	if (content && content.accessLevel) {
-		Object.assign(baseSchema, { 'isAccessibleForFree': content && content.accessLevel && content.accessLevel === 'free' ? 'True' : 'False' });
-	}
+	let baseSchema = {
+		'@context': 'http://schema.org',
+		'@type': 'CreativeWork'
+	};
 
 	Object.assign(baseSchema, { isPartOf: product(ftData, content) });
 
