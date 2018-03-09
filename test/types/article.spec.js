@@ -8,6 +8,7 @@ describe('Type: Article', function () {
 		it('has correct base format', function () {
 			const result = article({});
 			expect(result.isAccessibleForFree).to.equal('False');
+			expect(result['@type']).to.equal('NewsArticle');
 			expect(result.isPartOf).to.deep.equal({ '@type': [ 'CreativeWork', 'Product' ], name: 'Financial Times' });
 			expect(result.publisher).to.contain({ '@type': 'Organization', '@context': 'http://schema.org', name: 'Financial Times' });
 		});

@@ -31,6 +31,7 @@ describe('Type: Barrier', function () {
 
 		it('has correct base format with data pertaining to requested content', function () {
 			const result = barrier(mergeWithArticle({ accessLevel: 'foo' }));
+			expect(result['@type']).to.equal('NewsArticle');
 			expect(result.isAccessibleForFree).to.equal('False');
 			expect(result.isPartOf).to.deep.equal({ '@type': [ 'CreativeWork', 'Product' ], name: 'Financial Times' });
 			expect(result.publisher).to.contain({ '@type': 'Organization', '@context': 'http://schema.org', name: 'Financial Times' });
@@ -38,12 +39,14 @@ describe('Type: Barrier', function () {
 
 		it('wont add productID entitlements label if no matching content.accessLevel', function () {
 			const result = barrier(mergeWithArticle({ accessLevel: 'foo' }));
+			expect(result['@type']).to.equal('NewsArticle');
 			expect(result.isPartOf).to.deep.equal({ '@type': [ 'CreativeWork', 'Product' ], name: 'Financial Times' });
 		});
 
 		it('correctly formats productId entitlements label based upon content.accessLevel', function () {
 			const mockContent = mergeWithArticle({ accessLevel: 'premium' });
 			const result = barrier(mockContent);
+			expect(result['@type']).to.equal('NewsArticle');
 			expect(result.isPartOf.productID).to.equal('ft.com:premium');
 		});
 
