@@ -5,9 +5,14 @@ const organization = require('./organization');
 const product = require('./product');
 const ftData = require('../data/ft');
 
+const hasMinimumContentData = (data) => {
+	const requiredKeys = [ 'title', 'authors', 'publishedDate', 'mainImage' ];
+	return requiredKeys.every(key => data[key]);
+};
+
 module.exports = (content) => {
-	/* if passed article content markup as if article */
-	if (content) return article(content);
+	/* if passed article content markup as article */
+	if (content && hasMinimumContentData(content)) return article(content);
 
 	let baseSchema = {
 		'@context': 'http://schema.org',
