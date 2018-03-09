@@ -6,7 +6,7 @@ const product = require('./product');
 const ftData = require('../data/ft');
 
 const hasMinimumContentData = (data) => {
-	const requiredKeys = [ 'title', 'authors', 'publishedDate', 'mainImage' ];
+	const requiredKeys = [ 'title', 'authors', 'publishedDate', 'mainImage', 'accessLevel' ];
 	return requiredKeys.every(key => data[key]);
 };
 
