@@ -2,7 +2,7 @@ module.exports = {
 	prefLabel: 'Financial Times',
 	legalName: 'The Financial Times Ltd.',
 	logo: {
-		url: 'http://im.ft-static.com/m/img/masthead_main.jpg',
+		url: 'https://im.ft-static.com/m/img/masthead_main.jpg',
 		width: 435,
 		height: 36
 	},
