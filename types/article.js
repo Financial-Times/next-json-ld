@@ -8,6 +8,17 @@ const organization = require('./organization');
 const product = require('./product');
 const ftData = require('../data/ft');
 
+function getArticleBody (content) {
+	if (content.bodyText) {
+		return content.bodyText;
+	}
+
+	if (content.bodyHTML) {
+		return htmlToText.fromString(content.bodyHTML, {ignoreHref: true});
+	}
+
+	return '';
+}
 
 module.exports = (content) => {
 	let baseSchema = {
@@ -37,9 +48,9 @@ module.exports = (content) => {
 		});
 	}
 
-	if (content.bodyHTML) {
-		const text = htmlToText.fromString(content.bodyHTML, {ignoreHref: true});
-		Object.assign(baseSchema, {articleBody: text, wordCount: wordcount(text)});
+	const articleBody = getArticleBody(content);
+	if (articleBody) {
+		Object.assign(baseSchema, { articleBody, wordCount: wordcount(articleBody) });
 	}
 
 	Object.assign(baseSchema, { publisher: organization(ftData) });

@@ -3,6 +3,27 @@ const article = require('../../types/article');
 
 describe('Type: Article', function () {
 
+	context('articleBody', function () {
+		it('doesnt return if no text or html available', function () {
+			const result = article({});
+			expect(result.articleBody).to.be.undefined;
+		});
+		it('defaults to body text if available', function () {
+			const result = article({
+				bodyText: 'Hello, World.',
+				bodyHTML: '<p>Hello I\'m <blink>HTML</blink>!</p>',
+			});
+			expect(result.articleBody).to.equal('Hello, World.');
+		});
+		it('turns body HTML into text if available', function () {
+			const result = article({
+				bodyHTML: '<p>Hello I\'m <blink>HTML</blink>!</p>',
+			});
+			expect(result.articleBody).to.equal('Hello I\'m HTML!');
+		});
+	});
+
+
 	context('Subscribe with Google', function () {
 
 		it('has correct base format', function () {
