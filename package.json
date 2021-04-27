@@ -22,5 +22,8 @@
     "commitmsg": "node_modules/.bin/secret-squirrel-commitmsg",
     "prepush": "make verify -j3",
     "prepare": "npx snyk protect || npx snyk protect -d || true"
+  },
+  "engines": {
+    "node": "12.x"
   }
 }
