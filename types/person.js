@@ -50,7 +50,7 @@ module.exports = (person) => {
 		Object.assign(baseSchema, {sameAs: sameAs});
 	}
 
-	Object.assign(baseSchema, {worksFor: organization(ftData)})
+	Object.assign(baseSchema, {worksFor: organization(ftData)});
 
 	return baseSchema;
 };
