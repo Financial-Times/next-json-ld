@@ -7,16 +7,16 @@ describe('Type: liveBlogPosting', function () {
 		it('should have the correct @type', () => {
 			const result = liveblog({});
 			expect(result['@type']).to.equal('LiveBlogPosting');
-		})
+		});
 
 		it('should have the required fields when passed adequate data', () => {
-			const result = liveblog({"publishedDate": "2021-03-25T22:44:55.577Z","firstPublishedDate": "2021-03-25T00:14:12.161Z"});
+			const result = liveblog({'publishedDate': '2021-03-25T22:44:55.577Z','firstPublishedDate': '2021-03-25T00:14:12.161Z'});
 			expect(Object.keys(result)).to.include.members(['@type', 'headline', 'datePublished', 'dateModified', 'coverageStartTime', 'coverageEndTime']);
 			expect(result.isPartOf).to.deep.equal({ '@type': [ 'CreativeWork', 'Product' ], name: 'Financial Times' });
 			expect(result.publisher).to.contain({ '@type': 'Organization', '@context': 'http://schema.org', name: 'Financial Times' });
-		})
+		});
 
-	})
+	});
 
 	context('live blog Description', function () {
 
@@ -36,6 +36,28 @@ describe('Type: liveBlogPosting', function () {
 			});
 			expect(result.description).to.equal('Hello I\'m HTML!');
 		});
+	});
+
+	context('Coverage times', function () {
+
+		it('should have the correct coverage times', () => {
+			const result = liveblog({'publishedDate': '2021-04-28T20:59:10+01:00','firstPublishedDate': '2021-04-28T20:59:10+01:00'});
+			expect(Object.keys(result)).to.include.members(['coverageStartTime', 'coverageEndTime']);
+			expect(result['coverageStartTime']).to.equal('2021-04-28T20:59:10+01:00');
+			expect(result['coverageEndTime']).to.equal('2021-04-28T21:00:10+01:00');
+		});
+
+		it('coverageEndTime should be a minute after coverageStartTime', () => {
+			const result = liveblog({'publishedDate': '2021-04-28T20:59:10+01:00','firstPublishedDate': '2021-04-28T20:59:10+01:00'});
+			expect(result['coverageEndTime']).to.equal('2021-04-28T21:00:10+01:00');
+		});
+
+		it('coverageEndTime should remain same day if published a minute before the end of the day', () => {
+			const result = liveblog({'publishedDate': '2021-04-28T23:59:10+01:00','firstPublishedDate': '2021-04-28T23:59:10+01:00'});
+			expect(Object.keys(result)).to.include.members(['coverageStartTime', 'coverageEndTime']);
+			expect(result['coverageEndTime']).to.equal('2021-04-28T23:59:59+01:00');
+		});
+
 	});
 
 
