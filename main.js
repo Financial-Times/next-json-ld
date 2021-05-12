@@ -14,5 +14,6 @@ module.exports = {
 	person: require('./types/person'),
 	webPage: require('./types/webpage'),
 	video: require('./types/video'),
-	barrier: require('./types/barrier')
+	barrier: require('./types/barrier'),
+	liveBlog: require('./types/liveblog'),
 };

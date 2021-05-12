@@ -19,4 +19,4 @@ module.exports = {
 		subscribed: 'ft.com:subscribed',
 		premium: 'ft.com:premium'
 	}
-}
+};

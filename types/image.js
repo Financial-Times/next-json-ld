@@ -8,4 +8,4 @@ module.exports = (image) => {
 		'width': image.width,
 		'height': image.height
 	};
-}
+};
