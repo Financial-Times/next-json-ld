@@ -1,0 +1,32 @@
+{
+    "posts": [
+        {
+            "standout": {
+                "breakingNews": false,
+                "editorsChoice": false,
+                "exclusive": false,
+                "scoop": false
+            },
+            "webUrl": "https://www.ft.com/content",
+            "publishedDate": "2021-05-12T22:30:36.929Z",
+            "bodyHTML": "<p>Hello I'm <blink>HTML</blink>!</p>",
+            "title": "Lorem Ipsum",
+            "byline": "Anna Gross and John Burn-Murdoch in London, Amy Kazmin and Jyotsna Singh in New Delhi",
+            "url": "https://www.ft.com/content"
+        },
+        {
+            "standout": {
+                "breakingNews": false,
+                "editorsChoice": false,
+                "exclusive": false,
+                "scoop": false
+            },
+            "webUrl": "https://www.ft.com/content",
+            "publishedDate": "2021-05-12T22:29:42.706Z",
+            "bodyHTML": "<p>Lorem ipsum</p>",
+            "title": "Lorem ipsum",
+            "byline": "FT reporters",
+            "url": "https://www.ft.com/content"
+        }
+    ]
+}
