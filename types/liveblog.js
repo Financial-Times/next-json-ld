@@ -56,6 +56,34 @@ function getLiveBlogDescription (content) {
 	return '';
 }
 
+function getLiveBlogPostingSchemaFromPost (post) {
+	let baseSchema = {
+		'@type': 'BlogPosting'
+	};
+
+	if (post.title) {
+		baseSchema.headline = post.title;
+	}
+
+	if (post.publishedDate) {
+		baseSchema.datePublished = post.publishedDate;
+	}
+
+	if (post.mainImage) {
+		baseSchema.image = post.mainImage.url;
+	}
+
+	if (post.url || post.webUrl) {
+		baseSchema.url = post.url || post.webUrl;
+	}
+
+	if (post.bodyHTML) {
+		baseSchema.articleBody = htmlToText.fromString(post.bodyHTML);
+	}
+
+	return baseSchema;
+}
+
 module.exports = (content) => {
 	let baseSchema = {
 		'@context': 'http://schema.org',
@@ -81,6 +109,13 @@ module.exports = (content) => {
 
 	if (content.mainImage) {
 		baseSchema = { ...baseSchema, image: image(content.mainImage) };
+	}
+
+	if (content.posts && Array.isArray(content.posts)) {
+		baseSchema = {
+			...baseSchema,
+			liveBlogUpdate: content.posts.map(e => getLiveBlogPostingSchemaFromPost(e))
+		};
 	}
 
 	return baseSchema;
