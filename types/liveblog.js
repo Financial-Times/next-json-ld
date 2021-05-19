@@ -56,6 +56,14 @@ function getLiveBlogDescription (content) {
 	return '';
 }
 
+function getDateModified (content) {
+	if(content.posts && content.posts[0].publishedDate) {
+		return content.posts[0].publishedDate;
+	}
+
+	return content.publishedDate;
+}
+
 function getLiveBlogPostingSchemaFromPost (post) {
 	let baseSchema = {
 		'@type': 'BlogPosting'
@@ -67,6 +75,7 @@ function getLiveBlogPostingSchemaFromPost (post) {
 
 	if (post.publishedDate) {
 		baseSchema.datePublished = post.publishedDate;
+		baseSchema.dateModified = post.publishedDate;
 	}
 
 	if (post.mainImage) {
@@ -91,7 +100,7 @@ module.exports = (content) => {
 		'url': content.canonicalUrl,
 		'headline': content.title,
 		'datePublished': content.firstPublishedDate || content.publishedDate,
-		'dateModified': content.publishedDate,
+		'dateModified': getDateModified(content),
 		'isAccessibleForFree': content.accessLevel && content.accessLevel === 'free' ? 'True' : 'False'
 	};
 

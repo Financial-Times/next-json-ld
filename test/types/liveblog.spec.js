@@ -106,4 +106,11 @@ describe('Type: liveBlogPosting', function () {
 		});
 	});
 
+	context('dateModified field', function () {
+		it('should have dateModified should equal date published field of first post if posts field exists', () => {
+			const result = liveblog({ 'publishedDate': '2021-03-25T22:44:55.577Z', 'firstPublishedDate': '2021-03-25T00:14:12.161Z', posts });
+			expect(result.dateModified).to.equal(posts[0].publishedDate);
+		});
+	});
+
 });
