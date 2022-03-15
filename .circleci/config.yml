@@ -113,6 +113,9 @@ jobs:
     steps:
       - *attach_workspace
       - run:
+          name: Set npm auth token
+          command: echo "//registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN}" > ${HOME}/.npmrc
+      - run:
           name: shared-helper / npm-store-auth-token
           command: .circleci/shared-helpers/helper-npm-store-auth-token
       - run: npx snyk monitor --org=customer-products --project-name=Financial-Times/next-json-ld
@@ -144,6 +147,7 @@ workflows:
           requires:
             - build
       - publish:
+          context: npm-publish-token
           filters:
             <<: *filters_version_tag
           requires:
