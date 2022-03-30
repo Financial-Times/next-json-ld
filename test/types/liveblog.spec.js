@@ -95,7 +95,6 @@ describe('Type: liveBlogPosting', function () {
 
 	});
 
-
 	context('liveBlogUpdate field', function () {
 		it('should have liveBlogUpdate field if liveblogpackage has posts field', () => {
 			const result = liveblog({ 'publishedDate': '2021-03-25T22:44:55.577Z', 'firstPublishedDate': '2021-03-25T00:14:12.161Z', posts });
@@ -107,15 +106,15 @@ describe('Type: liveBlogPosting', function () {
 
 	context('articleBody field', function () {
 		it('uses the content bodyText property', () => {
-			const postWithBodyText = posts[1];
+			const postWithBodyText = posts[0];
 			const result = liveblog({ posts: [postWithBodyText] });
 			expect(result.liveBlogUpdate[0].articleBody).to.equal(postWithBodyText.bodyText);
 		});
 
-		it('transforms the content bodyHTML to plain text when no bodyText is available', () => {
-			const postWithoutBodyText = posts[0];
+		it('doesn\'t use the content bodyHTML when bodyText is unavailable', () => {
+			const postWithoutBodyText = posts[1];
 			const result = liveblog({ posts: [postWithoutBodyText] });
-			expect(result.liveBlogUpdate[0].articleBody).to.equal('Hello I\'m HTML!');
+			expect(result.liveBlogUpdate[0].articleBody).to.be.undefined;
 		});
 	});
 

@@ -15,11 +15,11 @@ describe('Type: Article', function () {
 			});
 			expect(result.articleBody).to.equal('Hello, World.');
 		});
-		it('turns body HTML into text if available', function () {
+		it('does not turn body HTML into text', function () {
 			const result = article({
 				bodyHTML: '<p>Hello I\'m <blink>HTML</blink>!</p>',
 			});
-			expect(result.articleBody).to.equal('Hello I\'m HTML!');
+			expect(result.articleBody).to.be.undefined;
 		});
 	});
 

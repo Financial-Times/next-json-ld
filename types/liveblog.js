@@ -90,8 +90,6 @@ function getLiveBlogPostingSchemaFromPost (post) {
 
 	if (post.bodyText) {
 		baseSchema.articleBody = post.bodyText;
-	} else if (post.bodyHTML) {
-		baseSchema.articleBody = htmlToText(post.bodyHTML);
 	}
 
 	return baseSchema;
