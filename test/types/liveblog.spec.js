@@ -116,6 +116,7 @@ describe('Type: liveBlogPosting', function () {
 			const postWithoutBodyText = posts[0];
 			const result = liveblog({ posts: [postWithoutBodyText] });
 			expect(result.liveBlogUpdate[0].articleBody).to.equal('Hello I\'m HTML!');
+			expect(result.liveBlogUpdate[1].articleBody).to.equal('Hello I\'m plain body text.');
 		});
 	});
 
