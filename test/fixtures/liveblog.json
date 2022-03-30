@@ -9,6 +9,7 @@
             },
             "webUrl": "https://www.ft.com/content",
             "publishedDate": "2021-05-12T22:30:36.929Z",
+            "bodyText": "Hello I'm plain body text.",
             "bodyHTML": "<p>Hello I'm <blink>HTML</blink>!</p>",
             "title": "Lorem Ipsum",
             "byline": "Anna Gross and John Burn-Murdoch in London, Amy Kazmin and Jyotsna Singh in New Delhi",
@@ -23,8 +24,7 @@
             },
             "webUrl": "https://www.ft.com/content",
             "publishedDate": "2021-05-12T22:29:42.706Z",
-            "bodyText": "Hello I'm plain body text.",
-            "bodyHTML": "<p>Lorem ipsum</p>",
+            "bodyHTML": "<p>Hello I'm <blink>HTML</blink>!</p>",
             "title": "Lorem ipsum",
             "byline": "FT reporters",
             "url": "https://www.ft.com/content"

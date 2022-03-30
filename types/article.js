@@ -1,6 +1,5 @@
 'use strict';
 
-const { compile } = require('html-to-text');
 const wordcount = require('wordcount');
 const image = require('./image');
 const person = require('./person');
@@ -8,15 +7,9 @@ const organization = require('./organization');
 const product = require('./product');
 const ftData = require('../data/ft');
 
-const htmlToText = compile({ignoreHref: true});
-
 function getArticleBody (content) {
 	if (content.bodyText) {
 		return content.bodyText;
-	}
-
-	if (content.bodyHTML) {
-		return htmlToText(content.bodyHTML);
 	}
 
 	return '';
