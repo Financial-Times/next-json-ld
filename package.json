@@ -6,6 +6,7 @@
   "devDependencies": {
     "@financial-times/n-gage": "^3.5.0",
     "chai": "^4.1.2",
+    "check-engine": "^1.10.1",
     "eslint": "^3.15.0",
     "lintspaces-cli": "^0.6.0",
     "mocha": "^3.1.2",
@@ -22,9 +23,15 @@
     "precommit": "node_modules/.bin/secret-squirrel",
     "commitmsg": "node_modules/.bin/secret-squirrel-commitmsg",
     "prepush": "make verify -j3",
-    "prepare": "npx snyk protect || npx snyk protect -d || true"
+    "prepare": "npx snyk protect || npx snyk protect -d || true",
+    "preinstall": "[ \"$INIT_CWD\" != \"$PWD\" ] || npm_config_yes=true npx check-engine"
   },
   "engines": {
-    "node": "12.x"
+    "node": "12.x",
+    "npm": "7.x || 8.x"
+  },
+  "volta": {
+    "node": "12.22.11",
+    "npm": "7.20.2"
   }
 }
