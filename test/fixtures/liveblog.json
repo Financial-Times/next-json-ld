@@ -23,6 +23,7 @@
             },
             "webUrl": "https://www.ft.com/content",
             "publishedDate": "2021-05-12T22:29:42.706Z",
+            "bodyText": "Hello I'm plain body text.",
             "bodyHTML": "<p>Lorem ipsum</p>",
             "title": "Lorem ipsum",
             "byline": "FT reporters",

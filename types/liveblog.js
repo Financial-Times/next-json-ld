@@ -88,7 +88,9 @@ function getLiveBlogPostingSchemaFromPost (post) {
 		baseSchema.url = post.url || post.webUrl;
 	}
 
-	if (post.bodyHTML) {
+	if (post.bodyText) {
+		baseSchema.articleBody = post.bodyText;
+	} else if (post.bodyHTML) {
 		baseSchema.articleBody = htmlToText(post.bodyHTML);
 	}
 
