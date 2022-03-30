@@ -1,11 +1,13 @@
 'use strict';
 
-const htmlToText = require('html-to-text');
+const { compile } = require('html-to-text');
 const image = require('./image');
 const organization = require('./organization');
 const product = require('./product');
 const ftData = require('../data/ft');
 const moment = require('moment');
+
+const htmlToText = compile();
 
 /**
  * Gets the coverageEndTime for a liveBlogPosting by adding one minute to the coverageStartTime.
@@ -50,7 +52,7 @@ function getLiveBlogDescription (content) {
 	}
 
 	if (content.summary) {
-		return htmlToText.fromString(content.summary.bodyHTML);
+		return htmlToText(content.summary.bodyHTML);
 	}
 
 	return '';
@@ -86,8 +88,10 @@ function getLiveBlogPostingSchemaFromPost (post) {
 		baseSchema.url = post.url || post.webUrl;
 	}
 
-	if (post.bodyHTML) {
-		baseSchema.articleBody = htmlToText.fromString(post.bodyHTML);
+	if (post.bodyText) {
+		baseSchema.articleBody = post.bodyText;
+	} else if (post.bodyHTML) {
+		baseSchema.articleBody = htmlToText(post.bodyHTML);
 	}
 
 	return baseSchema;

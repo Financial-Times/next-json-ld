@@ -15,7 +15,7 @@
     "snyk": "^1.168.0"
   },
   "dependencies": {
-    "html-to-text": "^3.0.0",
+    "html-to-text": "^8.1.0",
     "moment": "^2.29.1",
     "wordcount": "^1.1.1"
   },
