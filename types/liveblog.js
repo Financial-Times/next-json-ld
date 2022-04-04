@@ -59,7 +59,7 @@ function getLiveBlogDescription (content) {
 }
 
 function getDateModified (content) {
-	if(Array.isArray(content.posts) && content.posts[0].publishedDate) {
+	if(Array.isArray(content.posts) && content.posts.length > 0 && content.posts[0].publishedDate) {
 		return content.posts[0].publishedDate;
 	}
 
