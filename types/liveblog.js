@@ -59,7 +59,7 @@ function getLiveBlogDescription (content) {
 }
 
 function getDateModified (content) {
-	if(content.posts && content.posts[0].publishedDate) {
+	if(Array.isArray(content.posts) && content.posts.length > 0 && content.posts[0].publishedDate) {
 		return content.posts[0].publishedDate;
 	}
 
@@ -122,7 +122,7 @@ module.exports = (content) => {
 		baseSchema = { ...baseSchema, image: image(content.mainImage) };
 	}
 
-	if (content.posts && Array.isArray(content.posts)) {
+	if (Array.isArray(content.posts)) {
 		baseSchema = {
 			...baseSchema,
 			liveBlogUpdate: content.posts.map(e => getLiveBlogPostingSchemaFromPost(e))
