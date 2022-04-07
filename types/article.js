@@ -37,12 +37,9 @@ module.exports = (content) => {
 		Object.assign(baseSchema, { image: image(content.mainImage) });
 	}
 
-	if (content.authorConcepts) {
-		baseSchema.author = [];
-		content.authorConcepts.forEach(author => {
-			baseSchema.author.push(person(author));
-		});
-	}
+	baseSchema.author = content.authorConcepts && content.authorConcepts.length ?
+		content.authorConcepts.map(author => person(author)) :
+		[];
 
 	const articleBody = getArticleBody(content);
 	if (articleBody) {

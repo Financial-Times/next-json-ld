@@ -1,6 +1,6 @@
 const { expect } = require('chai');
 const article = require('../../types/article');
-
+const authorsJson = require('../fixtures/authors.json');
 describe('Type: Article', function () {
 
 	context('articleBody', function () {
@@ -57,4 +57,16 @@ describe('Type: Article', function () {
 
 	});
 
+	context('Authors', function () {
+		it('authors content', function () {
+			const result = article({authorConcepts : authorsJson});
+			expect(result.author.length).to.equal(3);
+			authorsJson.forEach((item,index) => {
+				expect(result.author[index].name).to.equal(item.prefLabel);
+				expect(result.author[index]['@type']).to.equal('Person');
+				expect(result.author[index].url.indexOf(item.relativeUrl) > 0).to.equal(true);
+			});
+
+		});
+	});
 });
