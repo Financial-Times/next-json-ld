@@ -1,0 +1,62 @@
+[
+    {
+        "apiUrl": "http://api.ft.com/people/idperson_1",
+        "directType": "http://www.ft.com/ontology/person/Person",
+        "id": "idperson_1",
+        "predicate": "http://www.ft.com/ontology/annotation/hasAuthor",
+        "prefLabel": "Henry Foy",
+        "type": "PERSON",
+        "types": [
+            "http://www.ft.com/ontology/core/Thing",
+            "http://www.ft.com/ontology/concept/Concept",
+            "http://www.ft.com/ontology/person/Person"
+        ],
+        "preposition": "from",
+        "attributes": [
+            {
+                "key": "headshot",
+                "value": "https://d1e00ek4ebabms.cloudfront.net/production/uploaded-files/fthead-v1_henry-foy-id_person1.png"
+            }
+        ],
+        "url": "https://www.ft.com/henry-foy",
+        "relativeUrl": "/henry-foy"
+    },
+    {
+        "apiUrl": "http://api.ft.com/people/id_person2",
+        "directType": "http://www.ft.com/ontology/person/Person",
+        "id": "idperson_2",
+        "predicate": "http://www.ft.com/ontology/annotation/hasAuthor",
+        "prefLabel": "Eleni Varvitsioti",
+        "type": "PERSON",
+        "types": [
+            "http://www.ft.com/ontology/core/Thing",
+            "http://www.ft.com/ontology/concept/Concept",
+            "http://www.ft.com/ontology/person/Person"
+        ],
+        "preposition": "from",
+        "url": "https://www.ft.com/stream/id_person2",
+        "relativeUrl": "/stream/id_person2"
+    },
+    {
+        "apiUrl": "http://api.ft.com/people/idperson_3",
+        "directType": "http://www.ft.com/ontology/person/Person",
+        "id": "idperson_3",
+        "predicate": "http://www.ft.com/ontology/annotation/hasAuthor",
+        "prefLabel": "Sam Fleming",
+        "type": "PERSON",
+        "types": [
+            "http://www.ft.com/ontology/core/Thing",
+            "http://www.ft.com/ontology/concept/Concept",
+            "http://www.ft.com/ontology/person/Person"
+        ],
+        "preposition": "from",
+        "attributes": [
+            {
+                "key": "headshot",
+                "value": "https://d1e00ek4ebabms.cloudfront.net/production/uploaded-files/fthead-v1_sam-fleming-id_person3.png"
+            }
+        ],
+        "url": "https://www.ft.com/sam-flemming",
+        "relativeUrl": "/sam-flemming"
+    }
+]
