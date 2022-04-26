@@ -139,6 +139,10 @@ workflows:
       - build:
           filters:
             <<: *filters_ignore_tags_renovate_nori
+          name: build-v<< matrix.node-version >>
+          matrix:
+            parameters:
+              node-version: [ "16.14", "14.19" ]
       - test:
           requires:
             - build-v<< matrix.node-version >>
