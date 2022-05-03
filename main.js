@@ -16,4 +16,5 @@ module.exports = {
 	video: require('./types/video'),
 	barrier: require('./types/barrier'),
 	liveBlog: require('./types/liveblog'),
+	breadcrumb: require('./types/breadcrumb')
 };
