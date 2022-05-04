@@ -11,15 +11,26 @@ function countSlashes (str){
 	if(!str) return 0;
 	return (str.match(/\//g) || []).length;
 }
+function compareAlphabetical (a,b){
+	if(a === b) {
+		return 0;
+	}
 
+	if (a > b) {
+		return 1;
+	}
+
+	return -1;
+
+}
 function comparePredicates (a,b){
 	let weightA = predicateWeights[a.predicateName];
 	let weightB = predicateWeights[b.predicateName];
 	if(weightA === weightB){
 		let diffSlashes = countSlashes(a.relativeUrl) - countSlashes(b.relativeUrl);
 		if(diffSlashes === 0){
-			//In case same slashes and same predicate we set the current order
-			return 1;
+			//In case same slashes and same predicate we do alphabetical order
+			return compareAlphabetical(a.prefLabel,b.prefLabel);
 		}
 		else{
 			return diffSlashes;

@@ -12,24 +12,27 @@ describe('Type: Breadcrumb', function () {
 
 	it('has correct hierarchy', function () {
 		const result = breadcrumb(article);
-		expect(result.itemListElement).to.deep.equal([{
-			'@type': 'ListItem',
-			'name': 'World',
-			'item': 'https://www.ft.com/world',
-			'position': 1,
-		},
-		{
-			'@type': 'ListItem',
-			'name': 'Emerging markets',
-			'item': 'https://www.ft.com/emerging-markets',
-			'position': 2,
+		expect(result.itemListElement).to.deep.equal([
 
-		},
-		{
-			'@type': 'ListItem',
-			'name': 'Coronavirus pandemic',
-			'item': 'https://www.ft.com/coronavirus',
-			'position': 3,
-		}]);
+			{
+				'@type': 'ListItem',
+				'name': 'Emerging markets',
+				'item': 'https://www.ft.com/emerging-markets',
+				'position': 1,
+
+			},
+			{
+				'@type': 'ListItem',
+				'name': 'World',
+				'item': 'https://www.ft.com/world',
+				'position': 2,
+			},
+
+			{
+				'@type': 'ListItem',
+				'name': 'Coronavirus pandemic',
+				'item': 'https://www.ft.com/coronavirus',
+				'position': 3,
+			}]);
 	});
 });
