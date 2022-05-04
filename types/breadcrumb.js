@@ -37,7 +37,7 @@ function comparePredicates (a,b){
 		}
 	}
 	else{
-		return weightA - weightB;
+		return weightB - weightA;
 	}
 
 }
@@ -53,7 +53,7 @@ function getHierarchyAnnotations (annotations){
 		annotation.predicateName = annotation.predicate.split('/').pop();
 		return annotation;
 	}).filter(annotation => Object.keys(predicateWeights).includes(annotation.predicateName)).sort(comparePredicates)
-		.splice(2,maxTagNumber);
+		.splice(0,maxTagNumber);
 }
 function getBreadcrumbItemsFromAnnotation (annotations){
 	if(annotations){
@@ -80,7 +80,7 @@ function getBreadcrumbItems (content){
 		if(found = items.find(item => item.name === lastItem.name ))
 			items.splice(items.indexOf(found),1);
 		else
-			items.shift();
+			items.pop();
 		items.push(lastItem);
 		items = repositioning(items);
 	}
