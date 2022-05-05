@@ -7,9 +7,9 @@ const predicateWeights = {
 
 const maxTagNumber = 3;
 
-function countSlashes (str){
-	if(!str) return 0;
-	return (str.match(/\//g) || []).length;
+function countSlashes (string){
+	if(!string) return 0;
+	return string.split('/').length - 1;
 }
 function compareAlphabetical (a,b){
 	if(a === b) {
@@ -24,10 +24,10 @@ function compareAlphabetical (a,b){
 
 }
 function comparePredicates (a,b){
-	let weightA = predicateWeights[a.predicateName];
-	let weightB = predicateWeights[b.predicateName];
+	const weightA = predicateWeights[a.predicateName];
+	const weightB = predicateWeights[b.predicateName];
 	if(weightA === weightB){
-		let diffSlashes = countSlashes(a.relativeUrl) - countSlashes(b.relativeUrl);
+		const diffSlashes = countSlashes(a.relativeUrl) - countSlashes(b.relativeUrl);
 		if(diffSlashes === 0){
 			//In case same slashes and same predicate we do alphabetical order
 			return compareAlphabetical(a.prefLabel,b.prefLabel);
@@ -74,11 +74,12 @@ function repositioning (items){
 }
 function getBreadcrumbItems (content){
 	let items = getBreadcrumbItemsFromAnnotation(content.annotations);
-	let lastItem = getBreadcrumbItemFromDisplayConcept(content.displayConcept,items.length + 1);
+	const lastItem = getBreadcrumbItemFromDisplayConcept(content.displayConcept,items.length + 1);
 	if(lastItem){
-		let found = false;
-		if(found = items.find(item => item.name === lastItem.name ))
-			items.splice(items.indexOf(found),1);
+		let itemFound = items.find(item => item.name === lastItem.name );
+		if(itemFound){
+			items.splice(items.indexOf(itemFound),1);
+		}
 		else
 			items.pop();
 		items.push(lastItem);
@@ -98,7 +99,7 @@ function getBreadcrumbItem (position,name,url){
 }
 
 module.exports = (content) => {
-	let baseSchema = {
+	const baseSchema = {
 		'@context': 'https://schema.org',
 		'@type': 'BreadcrumbList',
 		'itemListElement' : getBreadcrumbItems(content)
