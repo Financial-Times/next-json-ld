@@ -23,7 +23,7 @@ function compareAlphabetical (a,b){
 	return -1;
 
 }
-function comparePredicates (a,b){
+function orderByPredicateName (a,b){
 	const weightA = predicateWeights[a.predicateName];
 	const weightB = predicateWeights[b.predicateName];
 	if(weightA === weightB){
@@ -43,12 +43,14 @@ function comparePredicates (a,b){
 }
 
 function getHierarchyAnnotations (annotations){
-	return annotations.map(annotation => {
+	const highlLevelAnnotations = annotations.map(annotation => {
 		annotation.predicateName = annotation.predicate.split('/').pop();
 		return annotation;
-	}).filter(annotation => Object.keys(predicateWeights).includes(annotation.predicateName)).sort(comparePredicates)
-		.splice(0,maxTagNumber);
+	}).filter(annotation => predicateWeights[annotation.predicateName]);
+
+	return highlLevelAnnotations.sort(orderByPredicateName).slice(0,maxTagNumber);
 }
+
 function getItemsFromAnnotation (annotations){
 	if(annotations){
 		return getHierarchyAnnotations(annotations);
