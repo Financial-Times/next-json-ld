@@ -42,12 +42,6 @@ function comparePredicates (a,b){
 
 }
 
-function getBreadcrumbItemFromDisplayConcept (displayConcept,position = 3){
-	if(!displayConcept)
-		return false;
-	return getBreadcrumbItem(position,displayConcept.prefLabel,displayConcept.url);
-}
-
 function getHierarchyAnnotations (annotations){
 	return annotations.map(annotation => {
 		annotation.predicateName = annotation.predicate.split('/').pop();
@@ -55,37 +49,29 @@ function getHierarchyAnnotations (annotations){
 	}).filter(annotation => Object.keys(predicateWeights).includes(annotation.predicateName)).sort(comparePredicates)
 		.splice(0,maxTagNumber);
 }
-function getBreadcrumbItemsFromAnnotation (annotations){
+function getItemsFromAnnotation (annotations){
 	if(annotations){
-		return getHierarchyAnnotations(annotations)
-			.map((annotation,index) => {
-				return getBreadcrumbItem(index + 1,annotation.prefLabel,annotation.url);
-			});
-
+		return getHierarchyAnnotations(annotations);
 	}
 	return [];
 }
 
-function repositioning (items){
-	return items.map((item,index) => {
-		item.position = index + 1;
-		return item;
-	});
-}
-function getBreadcrumbItems (content){
-	let items = getBreadcrumbItemsFromAnnotation(content.annotations);
-	const lastItem = getBreadcrumbItemFromDisplayConcept(content.displayConcept,items.length + 1);
+function getItems (content){
+	let items = getItemsFromAnnotation(content.annotations);
+	const lastItem = content.displayConcept || null;
 	if(lastItem){
-		let itemFound = items.find(item => item.name === lastItem.name );
-		if(itemFound){
-			items.splice(items.indexOf(itemFound),1);
-		}
-		else
-			items.pop();
+		items = items.filter(item => item.prefLabel !== lastItem.prefLabel).slice(0 , maxTagNumber - 1);
 		items.push(lastItem);
-		items = repositioning(items);
+		return items;
 	}
-	return items;
+	return items ;
+}
+
+function getBreadcrumbItems (content){
+	const items = getItems(content);
+	return items.map((annotation,index) => {
+		return getBreadcrumbItem(index + 1,annotation.prefLabel,annotation.url);
+	});
 }
 
 
