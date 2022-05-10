@@ -43,6 +43,9 @@ function orderByPredicateName (a,b){
 }
 
 function getHierarchyAnnotations (annotations){
+	if (!annotations || (annotations && !annotations.length)) {
+		return [];
+	}
 	const highlLevelAnnotations = annotations.map(annotation => {
 		annotation.predicateName = annotation.predicate.split('/').pop();
 		return annotation;
@@ -51,15 +54,8 @@ function getHierarchyAnnotations (annotations){
 	return highlLevelAnnotations.sort(orderByPredicateName).slice(0,maxTagNumber);
 }
 
-function getItemsFromAnnotation (annotations){
-	if(annotations){
-		return getHierarchyAnnotations(annotations);
-	}
-	return [];
-}
-
 function getItems (content){
-	let items = getItemsFromAnnotation(content.annotations);
+	let items = getHierarchyAnnotations(content.annotations);
 	const lastItem = content.displayConcept || null;
 	if(lastItem){
 		items = items.filter(item => item.prefLabel !== lastItem.prefLabel).slice(0 , maxTagNumber - 1);
@@ -72,15 +68,15 @@ function getItems (content){
 function getBreadcrumbItems (content){
 	const items = getItems(content);
 	return items.map((annotation,index) => {
-		return getBreadcrumbItem(index + 1,annotation.prefLabel,annotation.url);
+		return getBreadcrumbItem(index,annotation.prefLabel,annotation.url);
 	});
 }
 
 
-function getBreadcrumbItem (position,name,url){
+function getBreadcrumbItem (index,name,url){
 	return {
 		'@type': 'ListItem',
-		'position': position,
+		'position': index + 1,
 		'name': name,
 		'item': url
 	};
