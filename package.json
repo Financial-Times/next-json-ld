@@ -4,7 +4,7 @@
   "description": "Helpers for producing schema.org markup in JSON LD on ft.com",
   "main": "main.js",
   "devDependencies": {
-    "@financial-times/n-gage": "^3.5.0",
+    "@financial-times/n-gage": "^9.0.0",
     "chai": "^4.1.2",
     "check-engine": "^1.10.1",
     "eslint": "^3.15.0",
