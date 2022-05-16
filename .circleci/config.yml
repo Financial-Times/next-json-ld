@@ -76,7 +76,7 @@ jobs:
           command: git clone --depth 1 git@github.com:Financial-Times/next-ci-shared-helpers.git .circleci/shared-helpers
       - *restore_npm_cache
       - node/install-npm:
-          version: "7"
+          version: "7.20.2"
       - run:
           name: Install project dependencies
           command: make install
