@@ -83,10 +83,14 @@ function getBreadcrumbItem (index,name,url){
 }
 
 module.exports = (content) => {
+	const items = getBreadcrumbItems(content);
+	if(!items || items.length <= 0)
+		return null;
+
 	const baseSchema = {
 		'@context': 'https://schema.org',
 		'@type': 'BreadcrumbList',
-		'itemListElement' : getBreadcrumbItems(content)
+		'itemListElement' : items
 	};
 
 	return baseSchema;
