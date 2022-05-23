@@ -131,7 +131,6 @@ describe('Type: Breadcrumb', function () {
 		auxArticle.displayConcept = null;
 		delete auxArticle.displayConcept;
 		const result = breadcrumb(auxArticle);
-		expect(result).to.contain({ '@context': 'https://schema.org', '@type': 'BreadcrumbList' });
-		expect(result.itemListElement.length).to.equals(0);
+		expect(result).to.equal(null);
 	});
 });
