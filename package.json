@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "html-to-text": "^8.1.0",
-    "moment": "^2.29.1",
+    "moment": "^2.29.4",
     "wordcount": "^1.1.1"
   },
   "scripts": {
