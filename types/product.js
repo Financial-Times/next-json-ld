@@ -1,8 +1,7 @@
-
-module.exports = (company={}, content={}) => {
+module.exports = (company = {}, content = {}) => {
 	const baseSchema = {
-		'@type': [ 'CreativeWork', 'Product' ],
-		'name' : company.prefLabel
+		'@type': ['CreativeWork', 'Product'],
+		name: company.prefLabel
 	};
 
 	const entitlementsLabel = (company.entitlements || {})[content.accessLevel];

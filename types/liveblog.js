@@ -17,9 +17,11 @@ const htmlToText = compile();
  * @param {(string|moment.Moment)} coverageStartTime
  * @returns {string} formatted date string
  */
-function getCoverageEndTime (coverageStartTime) {
+function getCoverageEndTime(coverageStartTime) {
 	let startTime = moment(coverageStartTime).utcOffset(coverageStartTime);
-	if (moment(startTime).add(1, 'minute').isBefore(moment(startTime).endOf('day'))) {
+	if (
+		moment(startTime).add(1, 'minute').isBefore(moment(startTime).endOf('day'))
+	) {
 		return moment(startTime).add(1, 'minute').format();
 	}
 
@@ -35,14 +37,14 @@ function getCoverageEndTime (coverageStartTime) {
  * @param {Object} content
  * @returns {{coverageStartTime: string, coverageEndTime: string}}
  */
-function getcoverageTimes (content) {
+function getcoverageTimes(content) {
 	const publishedDate = content.firstPublishedDate || content.publishedDate;
 	const coverageStartTime = publishedDate;
 	let coverageEndTime = getCoverageEndTime(coverageStartTime);
 	return { coverageStartTime, coverageEndTime };
 }
 
-function getLiveBlogDescription (content) {
+function getLiveBlogDescription(content) {
 	if (content.alternativeTitles) {
 		return content.alternativeTitles.promotionalTitle;
 	}
@@ -58,15 +60,19 @@ function getLiveBlogDescription (content) {
 	return '';
 }
 
-function getDateModified (content) {
-	if(Array.isArray(content.posts) && content.posts.length > 0 && content.posts[0].publishedDate) {
+function getDateModified(content) {
+	if (
+		Array.isArray(content.posts) &&
+		content.posts.length > 0 &&
+		content.posts[0].publishedDate
+	) {
 		return content.posts[0].publishedDate;
 	}
 
 	return content.publishedDate;
 }
 
-function getLiveBlogPostingSchemaFromPost (post) {
+function getLiveBlogPostingSchemaFromPost(post) {
 	let baseSchema = {
 		'@type': 'BlogPosting'
 	};
@@ -99,11 +105,12 @@ module.exports = (content) => {
 	let baseSchema = {
 		'@context': 'http://schema.org',
 		'@type': 'LiveBlogPosting',
-		'url': content.canonicalUrl,
-		'headline': content.title,
-		'datePublished': content.firstPublishedDate || content.publishedDate,
-		'dateModified': getDateModified(content),
-		'isAccessibleForFree': content.accessLevel && content.accessLevel === 'free' ? 'True' : 'False'
+		url: content.canonicalUrl,
+		headline: content.title,
+		datePublished: content.firstPublishedDate || content.publishedDate,
+		dateModified: getDateModified(content),
+		isAccessibleForFree:
+			content.accessLevel && content.accessLevel === 'free' ? 'True' : 'False'
 	};
 
 	baseSchema = {
@@ -115,7 +122,10 @@ module.exports = (content) => {
 	};
 
 	if (content.alternativeTitles && content.alternativeTitles.promotionalTitle) {
-		baseSchema = { ...baseSchema, alternativeHeadline: content.alternativeTitles.promotionalTitle };
+		baseSchema = {
+			...baseSchema,
+			alternativeHeadline: content.alternativeTitles.promotionalTitle
+		};
 	}
 
 	if (content.mainImage) {
@@ -125,7 +135,9 @@ module.exports = (content) => {
 	if (Array.isArray(content.posts)) {
 		baseSchema = {
 			...baseSchema,
-			liveBlogUpdate: content.posts.map(e => getLiveBlogPostingSchemaFromPost(e))
+			liveBlogUpdate: content.posts.map((e) =>
+				getLiveBlogPostingSchemaFromPost(e)
+			)
 		};
 	}
 

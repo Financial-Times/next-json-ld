@@ -3,7 +3,7 @@
 const organization = require('./types/organization');
 const ftData = require('./data/ft');
 
-function ft () {
+function ft() {
 	return organization(ftData);
 }
 

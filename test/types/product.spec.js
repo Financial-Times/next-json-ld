@@ -11,12 +11,18 @@ describe('Type: Product', function () {
 
 	it('has correct base format', function () {
 		const result = product(mockCompany, {});
-		expect(result).to.deep.equal({ '@type': [ 'CreativeWork', 'Product' ], name: 'ft' });
+		expect(result).to.deep.equal({
+			'@type': ['CreativeWork', 'Product'],
+			name: 'ft'
+		});
 	});
 
 	it('wont add productID entitlements label if no matching content.accessLevel', function () {
 		const result = product(mockCompany, { accessLevel: 'foo' });
-		expect(result).to.deep.equal({ '@type': [ 'CreativeWork', 'Product' ], name: 'ft' });
+		expect(result).to.deep.equal({
+			'@type': ['CreativeWork', 'Product'],
+			name: 'ft'
+		});
 	});
 
 	it('correctly formats productId entitlements label based upon content.accessLevel', function () {
@@ -24,5 +30,4 @@ describe('Type: Product', function () {
 		const result = product(mockCompany, mockContent);
 		expect(result.productID).to.equal('freeEntitlement');
 	});
-
 });
