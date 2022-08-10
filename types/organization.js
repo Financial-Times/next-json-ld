@@ -7,8 +7,8 @@ module.exports = (company) => {
 	const sameAs = social(company, 'organization');
 	const base = {
 		'@type': 'Organization',
-		'@context':'http://schema.org',
-		'name': company.prefLabel,
+		'@context': 'http://schema.org',
+		name: company.prefLabel
 	};
 
 	if (company.legalName) {
@@ -24,7 +24,7 @@ module.exports = (company) => {
 	}
 
 	if (sameAs.length) {
-		Object.assign(base, {sameAs: sameAs});
+		Object.assign(base, { sameAs: sameAs });
 	}
 
 	return base;
