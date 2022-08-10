@@ -1,7 +1,6 @@
 .DS_Store
 .editorconfig
 *.env*
-.eslintrc.js
 .vs_code
 /bower_components/
 /node_modules/

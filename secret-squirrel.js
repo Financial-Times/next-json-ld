@@ -1,6 +1,6 @@
 module.exports = {
 	files: {
-		allow: [],
+		allow: ['.husky/pre-push','.husky/pre-commit'],
 		allowOverrides: []
 	},
 	strings: {
