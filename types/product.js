@@ -1,6 +1,6 @@
 module.exports = (company = {}, content = {}) => {
 	const baseSchema = {
-		'@type': ['CreativeWork', 'Product'],
+		'@type': ['CreativeWork'],
 		name: company.prefLabel
 	};
 

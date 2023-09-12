@@ -23,7 +23,7 @@ describe('Type: liveBlogPosting', function () {
 				'coverageEndTime'
 			]);
 			expect(result.isPartOf).to.deep.equal({
-				'@type': ['CreativeWork', 'Product'],
+				'@type': ['CreativeWork'],
 				name: 'Financial Times'
 			});
 			expect(result.publisher).to.contain({
@@ -96,7 +96,7 @@ describe('Type: liveBlogPosting', function () {
 			expect(result.isAccessibleForFree).to.equal('False');
 			expect(result['@type']).to.equal('LiveBlogPosting');
 			expect(result.isPartOf).to.deep.equal({
-				'@type': ['CreativeWork', 'Product'],
+				'@type': ['CreativeWork'],
 				name: 'Financial Times'
 			});
 			expect(result.publisher).to.contain({

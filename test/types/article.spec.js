@@ -28,7 +28,7 @@ describe('Type: Article', function () {
 			expect(result.isAccessibleForFree).to.equal('False');
 			expect(result['@type']).to.equal('NewsArticle');
 			expect(result.isPartOf).to.deep.equal({
-				'@type': ['CreativeWork', 'Product'],
+				'@type': ['CreativeWork'],
 				name: 'Financial Times'
 			});
 			expect(result.publisher).to.contain({
