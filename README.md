@@ -49,7 +49,7 @@ Included in the JSON-LD (but not the snippet below) is a whole load of other met
 	[...]
 	'isAccessibleForFree': 'False',
 	'isPartOf': {
-		'@type': [ 'CreativeWork' ],
+		'@type': [ 'CreativeWork', 'Product' ],
 		'name' : 'Financial Times',
 		'productID': 'ft.com:subscribed' // or 'ft.com:premium' or 'ft.com:registered' depending on the requested content accessLevel
 	}
@@ -66,7 +66,7 @@ SwG would automatically fetch all our SKUs on a free page (which is what you wou
 	[...]
 	'isAccessibleForFree': 'True',
 	'isPartOf': {
-		'@type': [ 'CreativeWork' ],
+		'@type': [ 'CreativeWork', 'Product' ],
 		'name' : 'Financial Times',
 		'productID': 'ft.com:free'
 	}
@@ -81,7 +81,7 @@ Content barriers populate the `isPartOf` markup with data pertaining to the requ
 	'@context': 'http://schema.org',
 	'isAccessibleForFree': 'False',
 	'isPartOf': {
-		'@type': [ 'CreativeWork' ],
+		'@type': [ 'CreativeWork', 'Product' ],
 		'name' : 'Financial Times',
 		'productID': 'ft.com:subscribed' // or 'ft.com:premium' or 'ft.com:registered' depending on the requested content accessLevel
 	}
