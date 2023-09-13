@@ -12,7 +12,7 @@ describe('Type: Barrier', function () {
 			expect(result.isAccessibleForFree).to.be.undefined;
 			expect(result['@type']).to.equal('CreativeWork');
 			expect(result.isPartOf).to.deep.equal({
-				'@type': ['CreativeWork'],
+				'@type': ['CreativeWork', 'Product'],
 				name: 'Financial Times'
 			});
 			expect(result.publisher).to.contain({
@@ -29,7 +29,7 @@ describe('Type: Barrier', function () {
 			expect(result.isAccessibleForFree).to.be.undefined;
 			expect(result['@type']).to.equal('CreativeWork');
 			expect(result.isPartOf).to.deep.equal({
-				'@type': ['CreativeWork'],
+				'@type': ['CreativeWork', 'Product'],
 				name: 'Financial Times'
 			});
 			expect(result.publisher).to.contain({
@@ -43,7 +43,7 @@ describe('Type: Barrier', function () {
 			const result = barrier(mergeWithArticle({ accessLevel: 'free' }));
 			expect(result['@type']).to.equal('NewsArticle');
 			expect(result.isAccessibleForFree).to.equal('True');
-			expect(result.isPartOf['@type']).to.eql(['CreativeWork']);
+			expect(result.isPartOf['@type']).to.eql(['CreativeWork', 'Product']);
 			expect(result.isPartOf).to.contain({
 				name: 'Financial Times',
 				productID: 'ft.com:free'
@@ -60,7 +60,7 @@ describe('Type: Barrier', function () {
 			expect(result['@type']).to.equal('NewsArticle');
 			expect(result.isAccessibleForFree).to.equal('False');
 			expect(result.isPartOf).to.deep.equal({
-				'@type': ['CreativeWork'],
+				'@type': ['CreativeWork', 'Product'],
 				name: 'Financial Times'
 			});
 		});
