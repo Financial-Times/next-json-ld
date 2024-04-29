@@ -44,11 +44,11 @@
 		"start": "dotcom-tool-kit run:local"
 	},
 	"engines": {
-		"node": "14.x || 16.x",
-		"npm": "7.x || 8.x"
+		"node": "18.x || 20.x",
+		"npm": "9.x || 10.x"
 	},
 	"volta": {
-		"node": "16.14.2",
-		"npm": "7.20.2"
+		"node": "18.20.2",
+		"npm": "10.5.0"
 	}
 }

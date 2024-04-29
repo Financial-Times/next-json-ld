@@ -20,3 +20,5 @@ options:
   "@dotcom-tool-kit/mocha":
     configPath: ".mocharc.json"
     files: ""
+  "@dotcom-tool-kit/circleci":
+    nodeVersion: 18.16-browsers
