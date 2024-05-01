@@ -1,6 +1,6 @@
 {
 	"name": "@financial-times/next-json-ld",
-	"version": "4.0.1",
+	"version": "4.0.2",
 	"description": "Helpers for producing schema.org markup in JSON LD on ft.com",
 	"main": "main.js",
 	"devDependencies": {
