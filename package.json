@@ -1,6 +1,6 @@
 {
 	"name": "@financial-times/next-json-ld",
-	"version": "4.0.1",
+	"version": "4.0.2",
 	"description": "Helpers for producing schema.org markup in JSON LD on ft.com",
 	"main": "main.js",
 	"devDependencies": {
@@ -17,6 +17,9 @@
 		"check-engine": "^1.10.1",
 		"dotcom-tool-kit": "^3.1.0",
 		"eslint": "^8.21.0",
+		"eslint-config-prettier": "^8.5.0",
+		"eslint-plugin-json": "^3.1.0",
+		"eslint-plugin-yml": "^1.1.0",
 		"husky": "^8.0.0",
 		"lintspaces-cli": "^0.6.0",
 		"mocha": "^6.0.0",
@@ -25,9 +28,6 @@
 		"snyk": "^1.168.0"
 	},
 	"dependencies": {
-		"eslint-config-prettier": "^8.5.0",
-		"eslint-plugin-json": "^3.1.0",
-		"eslint-plugin-yml": "^1.1.0",
 		"html-to-text": "^8.1.0",
 		"moment": "^2.29.1",
 		"wordcount": "^1.1.1"
