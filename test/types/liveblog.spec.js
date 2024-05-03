@@ -47,12 +47,7 @@ describe('Type: liveBlogPosting', function () {
 			expect(result.description).to.equal('Hello, World.');
 		});
 
-		it("turns content.summary.bodyHTML to text if topper.headline && content.alternativeTitles.promotionalTitle doesn't exist", function () {
-			const result = liveblog({
-				summary: { bodyHTML: "<p>Hello I'm <blink>HTML</blink>!</p>" }
-			});
-			expect(result.description).to.equal("Hello I'm HTML!");
-		});
+		// TODO: https://financialtimes.atlassian.net/browse/CI-2226 reinstate summary
 	});
 
 	context('Coverage times', function () {
