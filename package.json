@@ -24,15 +24,14 @@
 		"lintspaces-cli": "^0.6.0",
 		"mocha": "^6.0.0",
 		"npm-prepublish": "^1.2.2",
-		"proxyquire": "^1.8.0",
-		"snyk": "^1.168.0"
+		"proxyquire": "^1.8.0"
 	},
 	"dependencies": {
 		"moment": "^2.29.1",
 		"wordcount": "^1.1.1"
 	},
 	"scripts": {
-		"prepare": "npx snyk protect || npx snyk protect -d || true && husky install",
+		"prepare": "husky install",
 		"preinstall": "[ \"$INIT_CWD\" != \"$PWD\" ] || npm_config_yes=true npx check-engine",
 		"format": "dotcom-tool-kit format:local",
 		"build": "dotcom-tool-kit build:local",
