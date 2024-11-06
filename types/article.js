@@ -24,7 +24,9 @@ module.exports = (content) => {
 		datePublished: content.initialPublishedDate
 			? content.initialPublishedDate
 			: content.publishedDate,
-		dateModified: content.publishedDate,
+		dateModified: content.modifiedTimestamp
+			? new Date(content.modifiedTimestamp).toISOString()
+			: content.publishedDate,
 		description: content.description,
 		isAccessibleForFree:
 			content.accessLevel && content.accessLevel === 'free' ? 'True' : 'False'
