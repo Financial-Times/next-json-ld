@@ -86,7 +86,7 @@ function getLiveBlogPostingSchemaFromPost(post) {
 
 	if (post.publishedDate) {
 		baseSchema.datePublished = post.publishedDate;
-		baseSchema.dateModified = post.publishedDate;
+		baseSchema.dateModified = post.modifiedTimestamp ? new Date(post.modifiedTimestamp).toISOString() : post.publishedDate;
 	}
 
 	if (post.mainImage) {
