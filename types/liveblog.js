@@ -63,13 +63,13 @@ function getDateModified(content) {
 		content.posts[0].publishedDate
 	) {
 		// If modifiedTimestamp exists, use it. Otherwise, use publishedDate.
-		return (content.posts[0].modifiedTimestamp)
+		return content.posts[0].modifiedTimestamp
 			? new Date(content.posts[0].modifiedTimestamp).toISOString()
 			: content.posts[0].publishedDate;
 	}
 
 	// If modifiedTimestamp exists, use it. Otherwise, use publishedDate.
-	return (content.modifiedTimestamp)
+	return content.modifiedTimestamp
 		? new Date(content.modifiedTimestamp).toISOString()
 		: content.publishedDate;
 }

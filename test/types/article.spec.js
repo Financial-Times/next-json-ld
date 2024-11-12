@@ -80,14 +80,16 @@ describe('Type: Article', function () {
 			const modifiedTimestamp = 1620859836929;
 			const articleData = {
 				modifiedTimestamp,
-				publishedDate: "2021-05-12T22:30:36.929Z"
+				publishedDate: '2021-05-12T22:30:36.929Z'
 			};
 			const result = article(articleData);
-			expect(result.dateModified).to.equal(new Date(modifiedTimestamp).toISOString());
+			expect(result.dateModified).to.equal(
+				new Date(modifiedTimestamp).toISOString()
+			);
 		});
 
 		it('defaults to using publishedDate', () => {
-			const publishedDate = "2021-05-12T22:30:36.929Z";
+			const publishedDate = '2021-05-12T22:30:36.929Z';
 			const articleData = {
 				publishedDate
 			};
