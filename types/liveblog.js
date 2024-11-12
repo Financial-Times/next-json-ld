@@ -56,23 +56,22 @@ function getLiveBlogDescription(content) {
 }
 
 function getDateModified(content) {
+	// use the latest blog post date if it exists
 	if (
 		Array.isArray(content.posts) &&
 		content.posts.length > 0 &&
 		content.posts[0].publishedDate
 	) {
 		// If modifiedTimestamp exists, use it. Otherwise, use publishedDate.
-		if (content.posts[0].modifiedTimestamp) {
-			return new Date(content.posts[0].modifiedTimestamp).toISOString();
-		}
-		return content.posts[0].publishedDate;
+		return (content.posts[0].modifiedTimestamp)
+			? new Date(content.posts[0].modifiedTimestamp).toISOString()
+			: content.posts[0].publishedDate;
 	}
 
 	// If modifiedTimestamp exists, use it. Otherwise, use publishedDate.
-	if (content.modifiedTimestamp) {
-		return new Date(content.modifiedTimestamp).toISOString();
-	}
-	return content.publishedDate;
+	return (content.modifiedTimestamp)
+		? new Date(content.modifiedTimestamp).toISOString()
+		: content.publishedDate;
 }
 
 function getLiveBlogPostingSchemaFromPost(post) {

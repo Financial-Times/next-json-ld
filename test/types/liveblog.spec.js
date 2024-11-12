@@ -158,13 +158,46 @@ describe('Type: liveBlogPosting', function () {
 	});
 
 	context('dateModified field', function () {
-		it('should have dateModified should equal date published field of first post if posts field exists', () => {
+		it('should set dateModified to equal modified date of first post if posts field exists', () => {
 			const result = liveblog({
 				publishedDate: '2021-03-25T22:44:55.577Z',
 				firstPublishedDate: '2021-03-25T00:14:12.161Z',
 				posts
 			});
-			expect(result.dateModified).to.equal(posts[0].publishedDate);
+			const modifiedDate = new Date(posts[0].modifiedTimestamp).toISOString();
+			expect(result.dateModified).to.equal(modifiedDate);
+		});
+
+		it('should set dateModified to equal published date of first post if date modified does not exist', () => {
+			const noModDatePosts = [posts[1]];
+			const result = liveblog({
+				publishedDate: '2021-03-25T22:44:55.577Z',
+				firstPublishedDate: '2021-03-25T00:14:12.161Z',
+				posts: noModDatePosts
+			});
+			expect(result.dateModified).to.equal(posts[1].publishedDate);
+		});
+
+		it('should set dateModified to equal modified date of article if there are no live blog posts', () => {
+			const modifiedTimestamp = 1616715295577;
+			const result = liveblog({
+				publishedDate: '2021-03-25T22:44:55.577Z',
+				firstPublishedDate: '2021-03-25T00:14:12.161Z',
+				modifiedTimestamp,
+				posts: []
+			});
+			const modifiedDate = new Date(modifiedTimestamp).toISOString();
+			expect(result.dateModified).to.equal(modifiedDate);
+		});
+
+		it('should set dateModified to equal published date of article if there are no live blog posts and no date modified', () => {
+			const publishedDate = '2021-03-25T22:44:55.577Z';
+			const result = liveblog({
+				publishedDate,
+				firstPublishedDate: '2021-03-25T00:14:12.161Z',
+				posts: []
+			});
+			expect(result.dateModified).to.equal(publishedDate);
 		});
 	});
 });
